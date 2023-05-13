@@ -1,0 +1,17 @@
+.calendar{
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.calendar .day{
+    text-align: center;
+}
+
+.calendar .minMaxContainer{
+    margin-top: 0.5rem;
+    display: flex;
+    gap: 0.3rem;
+    justify-content: center;
+    color: var(--orange);
+}

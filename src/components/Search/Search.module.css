@@ -1,0 +1,38 @@
+.search{
+    margin-top: 1.7rem;
+}
+
+.search form{
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search form .searchInput{
+    padding: 1rem 4rem 1rem 1rem;
+    font-size: 1.5rem;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+}
+
+.search form .searchButton{
+    position: absolute;
+    right: 1rem;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+    padding: 0.5rem;
+    transition: 0.5s;
+}
+
+.search form .searchButton:hover{
+    background-color: rgb(234, 234, 234);
+    border-radius: 50%;
+}
+
+.search form .searchButton img{
+    width: 28px;
+}

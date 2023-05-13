@@ -1,35 +1,61 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// React Hooks
+import { useState, createContext } from 'react';
 
-function App() {
-  const [count, setCount] = useState(0)
+// App CSS
+import './app.css'
+
+// Components
+import { Card } from "./components/Card/Card";
+import { Search } from "./components/Search/Search";
+
+// Axios
+import axios from 'axios'
+
+// Context API
+export const WeatherContext = createContext();
+
+export function App() {
+
+  const [ search, setSearch ] = useState('');
+  const [ weatherData, setWeatherData ] = useState([]);
+  const [showCard, setShowCard] = useState(false)
+
+  function handleSubmitSearch(event){
+    event.preventDefault();
+    if (search.length > 0) {
+        axios.get(`https://api.hgbrasil.com/weather?format=json-cors&key=15b56dd8&city_name=${search}`)
+        .then(({data}) => {
+          setWeatherData(data.results);
+          console.log(data.results);
+          setShowCard(true)
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      }else{
+        alert('Digite alguma cidade!')
+      }
+  };
+
+  console.log(weatherData)
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="app">
+
+        <div className='appContainer'>
+          <h1 className='appTitle'>PREVISÃO DO TEMPO</h1>
+
+          {showCard &&
+            (<WeatherContext.Provider value={{ weatherData, setShowCard }}>
+              <Card />
+            </WeatherContext.Provider>)
+          }
+          <Search
+            search={setSearch}
+            onHandleSubmitSearch={handleSubmitSearch}
+          />
+        </div>
+
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
   )
 }
-
-export default App

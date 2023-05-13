@@ -2,7 +2,7 @@
 import { useState, createContext } from 'react';
 
 // App CSS
-import './app.css'
+import './App.css'
 
 // Components
 import { Card } from "./components/Card/Card";

@@ -26,7 +26,6 @@ export function App() {
         axios.get(`https://api.hgbrasil.com/weather?format=json-cors&key=15b56dd8&city_name=${search}`)
         .then(({data}) => {
           setWeatherData(data.results);
-          console.log(data.results);
           setShowCard(true)
         })
         .catch((error) => {
@@ -36,8 +35,6 @@ export function App() {
         alert('Digite alguma cidade!')
       }
   };
-
-  console.log(weatherData)
 
   return (
       <div className="app">

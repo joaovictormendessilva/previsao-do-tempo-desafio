@@ -1,6 +1,7 @@
 // CSS Modules for Search
 import styles from './Search.module.css';
 
+// Images
 import searchButton from '../../assets/img/search.svg'
 
 export function Search({ search, onHandleSubmitSearch }){

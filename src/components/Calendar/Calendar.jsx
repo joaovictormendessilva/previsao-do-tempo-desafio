@@ -1,55 +1,27 @@
 // CSS Modules for Calendar
 import styles from './Calendar.module.css'
 
+// Context API
+import { WeatherContext } from '../../App';
+import { useContext } from 'react';
+
 export function Calendar(){
 
-    const days = [
-         {
-            day: "Terça",
-            min: "18°",
-            max: "26°"
-        },
-        {
-            day: "Quarta",
-            min: "18°",
-            max: "26°"
-        },
-        {
-            day: "Quinta",
-            min: "18°",
-            max: "26°"
-        },
-        {
-            day: "Sexta",
-            min: "18°",
-            max: "26°"
-        },
-        {
-            day: "Sábado",
-            min: "18°",
-            max: "26°"
-        },
-        {
-            day: "Domingo",
-            min: "18°",
-            max: "26°"
-        },
-        
-    ]
+    const { weatherData } = useContext(WeatherContext)
 
     return (
         <div className={styles.calendar}>
 
-            {days.map((day) => {
+            {weatherData.forecast.slice(1, 8).map((data) => {
                 return (
-                        <div className={styles.day}>
-                            <h4>{day.day}</h4>
+                    <div className={styles.day}>
+                            <h4>{data.weekday}</h4>
                             <div className={styles.minMaxContainer}>
-                                <b>{day.min}</b>
-                                <b>{day.max}</b>
+                                <b>{data.min}°</b>
+                                <b>{data.max}°</b>
                             </div>
                         </div>
-                    )
+                )
             })}
         </div>
     );

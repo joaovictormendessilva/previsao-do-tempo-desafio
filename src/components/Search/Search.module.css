@@ -46,4 +46,8 @@
         padding: 0.8rem 4rem 0.8rem 0.8rem;
         font-size: 1rem;
     }
+
+    .search form .searchButton img{
+        width: 18px;
+    }
 }

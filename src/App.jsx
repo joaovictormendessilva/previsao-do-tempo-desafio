@@ -26,7 +26,7 @@ export function App() {
 
     if (search.length > 0) {
 
-        axios.get(`https://api.hgbrasil.com/weather?format=json-cors&key=f93cb03c&city_name=${search}`)
+        axios.get(`https://api.hgbrasil.com/weather?format=json-cors&key=c8dccb90&city_name=${search}`)
         .then(({data}) => {
 
           if (data.by === 'default') {

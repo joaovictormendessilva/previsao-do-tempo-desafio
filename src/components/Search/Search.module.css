@@ -36,3 +36,14 @@
 .search form .searchButton img{
     width: 28px;
 }
+
+@media (max-width: 500px){
+    .search form{
+        padding: 0 1rem;
+    }
+
+    .search form .searchInput{
+        padding: 0.8rem 4rem 0.8rem 0.8rem;
+        font-size: 1rem;
+    }
+}

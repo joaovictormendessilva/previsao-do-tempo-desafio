@@ -8,10 +8,19 @@
 
 .appContainer{
     width: 500px;
+    max-width: 100%;
 }
 
 .app .appContainer .appTitle{
     margin: 2rem 0;
     text-align: center;
     color: #fff;
+}
+
+.app .appContainer .boxMessage{
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    margin: 0.2rem 1rem;
+    text-align: center;
 }

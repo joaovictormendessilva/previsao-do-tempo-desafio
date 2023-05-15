@@ -18,21 +18,38 @@ export function App() {
 
   const [ search, setSearch ] = useState('');
   const [ weatherData, setWeatherData ] = useState([]);
-  const [showCard, setShowCard] = useState(false)
+  const [ showCard, setShowCard ] = useState(false);
+  const [ showErrorBox, setShowErrorBox ] = useState(false);
 
   function handleSubmitSearch(event){
     event.preventDefault();
+
     if (search.length > 0) {
-        axios.get(`https://api.hgbrasil.com/weather?format=json-cors&key=15b56dd8&city_name=${search}`)
+
+        axios.get(`https://api.hgbrasil.com/weather?format=json-cors&key=f93cb03c&city_name=${search}`)
         .then(({data}) => {
-          setWeatherData(data.results);
+
+          if (data.by === 'default') {
+            setShowErrorBox(true);
+          }
+          else{
+            setShowErrorBox(false);
+          }
           setShowCard(true)
+          setWeatherData(data.results);
+          
+
+          
         })
         .catch((error) => {
+
           console.log(error);
+
         });
       }else{
+
         alert('Digite alguma cidade!')
+
       }
   };
 
@@ -43,10 +60,18 @@ export function App() {
           <h1 className='appTitle'>PREVISÃO DO TEMPO</h1>
 
           {showCard &&
+            showErrorBox &&
+            <div className='boxMessage'>
+              <h5 className='errorMessage'>Cidade não encontrada. <br></br> por padrão, a resposta será: </h5>
+            </div>
+          }
+
+          {showCard &&
             (<WeatherContext.Provider value={{ weatherData, setShowCard }}>
               <Card />
             </WeatherContext.Provider>)
           }
+
           <Search
             search={setSearch}
             onHandleSubmitSearch={handleSubmitSearch}

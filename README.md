@@ -1,7 +1,7 @@
-<h1 align="center">Projeto previsão do tempo</h1>
+<h1 align="center">Projeto previsão do tempo responsivo</h1>
 <p align="center" >Projeto de estudos utilizando o consumo da API de previsão do tempo da <a href="https://console.hgbrasil.com/">HG Brasil</a></p>
 
-<h3 align="center">Veja o projeto online <a href="https://previsao-do-tempo-desafio.vercel.app/">clicando aqui</a></h3>
+<h3 align="center">Veja o projeto online <a href="https://previsao-do-tempo-desafio.vercel.app/">clicando aqui.</a></h3>
 
 <h3>Technologies</h3>
 <li>HTML</li>
